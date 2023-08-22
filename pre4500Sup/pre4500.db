@@ -28,7 +28,7 @@ record (ai, "$(P)CHOPPER:PIT:TEMP") {
     field(PREC, "3")
 
     info(INTEREST, "HIGH")
-    # info(ARCHIVE,  "10 VAL")
+    info(archive, "VAL")
 
     field(SDIS, "$(P)DISABLE")
     field(SSCN, "Passive")
@@ -48,7 +48,7 @@ record (ai, "$(P)COOLING:WATER:TEMP") {
     field(PREC, "3")
 
     info(INTEREST, "HIGH")
-    # info(ARCHIVE,  "10 VAL")
+    info(archive, "VAL")
 
     field(SDIS, "$(P)DISABLE")
     field(SSCN, "Passive")
@@ -68,7 +68,7 @@ record (ai, "$(P)CHOPPER:BODY:TEMP") {
     field(PREC, "3")
 
     info(INTEREST, "HIGH")
-    # info(ARCHIVE,  "10 VAL")
+    info(archive, "VAL")
 
     field(SDIS, "$(P)DISABLE")
     field(SSCN, "Passive")
@@ -88,7 +88,7 @@ record (ai, "$(P)SPARE:TEMP") {
     field(PREC, "3")
 
     info(INTEREST, "HIGH")
-    # info(ARCHIVE,  "10 VAL")
+    info(archive, "VAL")
 
     field(SDIS, "$(P)DISABLE")
     field(SSCN, "Passive")
