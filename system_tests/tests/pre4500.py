@@ -47,8 +47,8 @@ class Pre4500Tests(unittest.TestCase):
                 self._lewis.backdoor_set_on_device(TEMP_PROBE_EMULATOR[probe_position], temperature)
                 self.ca.assert_that_pv_is_number(TEMP_PROBE[probe_position], temperature/10)  #these temperatures are then divide by 10 to see if they match
 
-    def test_GIVEN_temperature_set_on_device_WHEN_reading_temperature_THEN_temperature_readback_matches(self):
-            
+    @skip_if_recsim("Lewis backdoor not available in recsim")
+    def test_GIVEN_temperature_set_on_device_WHEN_reading_temperature_THEN_temperature_readback_matches(self): 
         expected_temperature = [100, 200, 300, 400] #these temperatures are scaled by 10 as the input for the emulator has to be a integer, and are multipled by 0.1 within the IOC
         for probe_position in range(len(TEMP_PROBE)):
             self._set_current_temperature(expected_temperature[probe_position], TEMP_PROBE, TEMP_PROBE_EMULATOR)
