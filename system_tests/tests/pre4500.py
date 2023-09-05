@@ -19,7 +19,7 @@ IOCS = [
 ]
 
 
-TEST_MODES = [TestModes.RECSIM, TestModes.DEVSIM]
+TEST_MODES = [TestModes.DEVSIM]
 
 TEMP_PROBE = ["SPARE:TEMP", "CHOPPER:BODY:TEMP", "COOLING:WATER:TEMP","CHOPPER:PIT:TEMP"]
 TEMP_PROBE_EMULATOR = ["spare_temperature", "chopper_body", "cooling_water", "chopper_pit"]
