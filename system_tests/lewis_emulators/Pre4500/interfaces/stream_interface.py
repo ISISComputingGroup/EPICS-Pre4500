@@ -1,6 +1,6 @@
-from lewis.adapters.stream import StreamInterface, Cmd
+from lewis.adapters.stream import Cmd, StreamInterface
 from lewis.core.logging import has_log
-from lewis.utils.byte_conversions import int_to_raw_bytes, BYTE
+from lewis.utils.byte_conversions import BYTE, int_to_raw_bytes
 from lewis.utils.replies import conditional_reply
 
 
