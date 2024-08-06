@@ -9,6 +9,7 @@ def log_replies(f):
         result = f(self, *args, **kwargs)
         self.log.info(f"Reply in {f.__name__}: {result}")
         return result
+
     return _wrapper
 
 
@@ -33,7 +34,7 @@ def crc16(data):
             else:
                 crc >>= 1
 
-            crc %= BYTE ** 2
+            crc %= BYTE**2
 
     return int_to_raw_bytes(crc, 2, low_byte_first=True)
 
@@ -45,6 +46,7 @@ class Pre4500StreamInterface(StreamInterface):
 
     Note: Eurotherm uses modbus RTU, not TCP, so cannot use lewis' normal modbus implementation here.
     """
+
     commands = {
         Cmd("any_command", r"^([\s\S]*)$", return_mapping=lambda x: x),
     }
@@ -71,12 +73,12 @@ class Pre4500StreamInterface(StreamInterface):
         data = command[2:-2]
         crc = command[-2:]
 
-        assert(crc16(command) == b"\x00\x00", "Invalid checksum from IOC")
+        assert (crc16(command) == b"\x00\x00", "Invalid checksum from IOC")
 
         if len(data) != 4:
             raise ValueError(f"Invalid message length {len(data)}")
-        
-        if  not 0 < comms_address < 5:
+
+        if not 0 < comms_address < 5:
             raise Exception(f"invalid comms_address {comms_address}")
 
         if function_code == 3:
@@ -97,20 +99,19 @@ class Pre4500StreamInterface(StreamInterface):
                 reply_data = self.device.cooling_water
             elif comms_address == 4:
                 reply_data = self.device.chopper_pit
-            else: 
+            else:
                 raise Exception(f"invalid address {mem_address}")
 
-        else: 
+        else:
             raise Exception("TODO")
-        
 
         self.log.info(f"reply_data = {reply_data}")
         assert -0x8000 <= reply_data <= 0x7FFF, f"reply {reply_data} was outside modbus range, bug?"
 
-        reply = comms_address.to_bytes(1, byteorder="big", signed=True) \
-            + b"\x03\x02" \
+        reply = (
+            comms_address.to_bytes(1, byteorder="big", signed=True)
+            + b"\x03\x02"
             + reply_data.to_bytes(2, byteorder="big", signed=True)
+        )
 
         return reply + crc16(reply)
-
-  

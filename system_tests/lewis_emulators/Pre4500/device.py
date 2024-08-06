@@ -6,7 +6,6 @@ from .states import DefaultState
 
 
 class SimulatedPre4500(StateMachineDevice):
-
     """
     Simulated PRE4500 temperature sensor.
     """
@@ -22,16 +21,14 @@ class SimulatedPre4500(StateMachineDevice):
         self._chopper_body = 0
         self._cooling_water = 0
         self._chopper_pit = 0
-        
+
         self.error = "0"
 
     def _get_state_handlers(self):
         """
         Returns: states and their names
         """
-        return {
-            DefaultState.NAME: DefaultState()
-        }
+        return {DefaultState.NAME: DefaultState()}
 
     def _get_initial_state(self):
         """
@@ -44,14 +41,13 @@ class SimulatedPre4500(StateMachineDevice):
         Returns: the state transitions
         """
         return OrderedDict()
-    
+
     def _delay(self):
         """
         Simulate a delay.
         """
         if self.delay_time is not None:
             sleep(self.delay_time)
-
 
     @property
     def spare_temperature(self):
@@ -93,7 +89,7 @@ class SimulatedPre4500(StateMachineDevice):
             temp: the current temperature of the device in K.
 
         """
-        self._chopper_body =  int(temp)
+        self._chopper_body = int(temp)
 
     @property
     def cooling_water(self):
@@ -114,7 +110,7 @@ class SimulatedPre4500(StateMachineDevice):
             temp: the current temperature of the device in K.
 
         """
-        self._cooling_water =  int(temp)
+        self._cooling_water = int(temp)
 
     @property
     def chopper_pit(self):
@@ -135,5 +131,4 @@ class SimulatedPre4500(StateMachineDevice):
             temp: the current temperature of the device in K.
 
         """
-        self._chopper_pit =  int(temp)
-
+        self._chopper_pit = int(temp)
