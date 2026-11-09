@@ -17,9 +17,9 @@ record(bo, "$(P)DISABLE")
     field(ZNAM, "COMMS ENABLED")
     field(ONAM, "COMMS DISABLED")
 }
-record (ai, "$(P)CHOPPER:PIT:TEMP") {
+record (ai, "$(P)CHAN4:TEMP") {
 
-    field(DESC, "Chopper Pit Temperature")
+    field(DESC, "Chan 4 Temperature")
     $(IFNOTRECSIM) field(INP,  "@asyn($(PORT)MODBUS_RX_04,0)UINT16")
     $(IFNOTRECSIM) field(SCAN, "I/O Intr")
     $(IFNOTRECSIM) field(DTYP, "asynInt32")
@@ -28,18 +28,23 @@ record (ai, "$(P)CHOPPER:PIT:TEMP") {
     field(PREC, "3")
 
     info(INTEREST, "HIGH")
-    info(archive, "VAL")
+    # info(ARCHIVE,  "10 VAL")
 
     field(SDIS, "$(P)DISABLE")
     field(SSCN, "Passive")
     field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:CHOPPER:PIT:TEMP CP")
+    field(SIOL, "$(P)SIM:CHAN4:TEMP CP")
     field(ASLO, "0.1") 
 }
 
-record (ai, "$(P)COOLING:WATER:TEMP") {
+record(stringin, "$(P)CHAN4:NAME") {
+    field(VAL, "$(CHAN4_NAME)")
+	field(PINI, "YES")
+}
 
-    field(DESC, "Cooling Water Temperature")
+record (ai, "$(P)CHAN3:TEMP") {
+
+    field(DESC, "Chan 3 Temperature")
     $(IFNOTRECSIM) field(INP,  "@asyn($(PORT)MODBUS_RX_03,0)UINT16")
     $(IFNOTRECSIM) field(SCAN, "I/O Intr")
     $(IFNOTRECSIM) field(DTYP, "asynInt32")
@@ -48,18 +53,23 @@ record (ai, "$(P)COOLING:WATER:TEMP") {
     field(PREC, "3")
 
     info(INTEREST, "HIGH")
-    info(archive, "VAL")
+    # info(ARCHIVE,  "10 VAL")
 
     field(SDIS, "$(P)DISABLE")
     field(SSCN, "Passive")
     field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:COOLING:WATER:TEMP CP")
+    field(SIOL, "$(P)SIM:CHAN3:TEMP CP")
     field(ASLO, "0.1") 
 }
 
-record (ai, "$(P)CHOPPER:BODY:TEMP") {
+record(stringin, "$(P)CHAN3:NAME") {
+    field(VAL, "$(CHAN3_NAME)")
+	field(PINI, "YES")
+}
 
-    field(DESC, "Chopper Body Temperature")
+record (ai, "$(P)CHAN2:TEMP") {
+
+    field(DESC, "Chan 2 Temperature")
     $(IFNOTRECSIM) field(INP,  "@asyn($(PORT)MODBUS_RX_02,0)UINT16")
     $(IFNOTRECSIM) field(SCAN, "I/O Intr")
     $(IFNOTRECSIM) field(DTYP, "asynInt32")
@@ -68,18 +78,23 @@ record (ai, "$(P)CHOPPER:BODY:TEMP") {
     field(PREC, "3")
 
     info(INTEREST, "HIGH")
-    info(archive, "VAL")
+    # info(ARCHIVE,  "10 VAL")
 
     field(SDIS, "$(P)DISABLE")
     field(SSCN, "Passive")
     field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:CHOPPER:BODY:TEMP")
+    field(SIOL, "$(P)SIM:CHAN2:TEMP")
     field(ASLO, "0.1") 
 }
 
-record (ai, "$(P)SPARE:TEMP") {
+record(stringin, "$(P)CHAN2:NAME") {
+    field(VAL, "$(CHAN2_NAME)")
+	field(PINI, "YES")
+}
 
-    field(DESC, "Spare Temperature")
+record (ai, "$(P)CHAN1:TEMP") {
+
+    field(DESC, "Chan 1 Temperature")
     $(IFNOTRECSIM) field(INP,  "@asyn($(PORT)MODBUS_RX_01,0)UINT16")
     $(IFNOTRECSIM) field(SCAN, "I/O Intr")
     $(IFNOTRECSIM) field(DTYP, "asynInt32")
@@ -88,11 +103,16 @@ record (ai, "$(P)SPARE:TEMP") {
     field(PREC, "3")
 
     info(INTEREST, "HIGH")
-    info(archive, "VAL")
+    # info(ARCHIVE,  "10 VAL")
 
     field(SDIS, "$(P)DISABLE")
     field(SSCN, "Passive")
     field(SIML, "$(P)SIM")
-    field(SIOL, "$(P)SIM:SPARE:TEMP CP")
+    field(SIOL, "$(P)SIM:CHAN1:TEMP CP")
     field(ASLO, "0.1") 
+}
+
+record(stringin, "$(P)CHAN1:NAME") {
+    field(VAL, "$(CHAN1_NAME)")
+	field(PINI, "YES")
 }
