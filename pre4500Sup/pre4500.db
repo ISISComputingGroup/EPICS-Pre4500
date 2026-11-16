@@ -116,3 +116,8 @@ record(stringin, "$(P)CHAN1:NAME") {
     field(VAL, "$(CHAN1_NAME)")
 	field(PINI, "YES")
 }
+
+record(ao, "$(P)SIM:CHAN1:TEMP")
+record(ao, "$(P)SIM:CHAN2:TEMP")
+record(ao, "$(P)SIM:CHAN3:TEMP")
+record(ao, "$(P)SIM:CHAN4:TEMP")
