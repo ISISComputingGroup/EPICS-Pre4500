@@ -43,11 +43,11 @@ class Pre4500Tests(unittest.TestCase):
         intial_temp = 0.0
         self._set_current_temperature(intial_temp, TEMP_PROBE, TEMP_PROBE_EMULATOR)
 
-    def _set_current_temperature(self, temperature, TEMP_PROBE, TEMP_PROBE_EMULATOR):
-        for probe_position in range(len(TEMP_PROBE)):
-            self._lewis.backdoor_set_on_device(TEMP_PROBE_EMULATOR[probe_position], temperature)
+    def _set_current_temperature(self, temperature, temp_probe, temp_probe_emulator):
+        for probe_position in range(len(temp_probe)):
+            self._lewis.backdoor_set_on_device(temp_probe_emulator[probe_position], temperature)
             self.ca.assert_that_pv_is_number(
-                TEMP_PROBE[probe_position], temperature / 10
+                temp_probe[probe_position], temperature / 10
             )  # these temperatures are then divide by 10 to see if they match
 
     def test_GIVEN_temperature_set_on_device_WHEN_reading_temperature_THEN_temperature_readback_matches(
