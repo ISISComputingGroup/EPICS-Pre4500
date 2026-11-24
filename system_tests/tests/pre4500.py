@@ -20,8 +20,8 @@ IOCS = [
 
 TEST_MODES = [TestModes.DEVSIM]
 
-TEMP_PROBE = ["SPARE:TEMP", "CHOPPER:BODY:TEMP", "COOLING:WATER:TEMP", "CHOPPER:PIT:TEMP"]
-TEMP_PROBE_EMULATOR = ["spare_temperature", "chopper_body", "cooling_water", "chopper_pit"]
+TEMP_PROBE = ["CHAN1:TEMP", "CHAN2:TEMP", "CHAN3:TEMP", "CHAN4:TEMP"]
+TEMP_PROBE_EMULATOR = ["chan1", "chan2", "chan3", "chan4"]
 
 
 class Pre4500Tests(unittest.TestCase):

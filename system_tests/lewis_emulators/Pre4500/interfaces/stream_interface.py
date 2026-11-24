@@ -92,13 +92,13 @@ class Pre4500StreamInterface(StreamInterface):
         self.log.info(f"Attempting to read {words_to_read} words from mem address: {mem_address}")
         if mem_address == 1001:
             if comms_address == 1:
-                reply_data = self.device.spare_temperature
+                reply_data = self.device.chan1
             elif comms_address == 2:
-                reply_data = self.device.chopper_body
+                reply_data = self.device.chan2
             elif comms_address == 3:
-                reply_data = self.device.cooling_water
+                reply_data = self.device.chan3
             elif comms_address == 4:
-                reply_data = self.device.chopper_pit
+                reply_data = self.device.chan4
             else:
                 raise Exception(f"invalid address {mem_address}")
 
